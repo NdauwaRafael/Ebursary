@@ -1,5 +1,6 @@
 <?php
 require "../connection.php";
+require "../update_bursaries.php";
 session_start();
   if($_POST ){
 

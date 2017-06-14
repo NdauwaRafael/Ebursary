@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 require "../connection.php";
+require "../update_bursaries.php";
 
 if ($_POST) {
 
@@ -13,7 +14,7 @@ if ($_POST) {
     $bio = $_POST['bio'];
     $bursary_id = $_POST['bursary_id'];
 
-    $apply = "INSERT INTO `applied`(`id`, `applied_bursary`,`bursary_id`, `educational_level`, `school_name`, `country`, `parent_details`, `bio`, `applicant`) VALUES (NULL,'$applied_bursary','$bursary_id','$education_level','$school_name','$county','$parent_details','$bio','{$_SESSION['applicant_email']}')";
+    $apply = "INSERT INTO `applied`(`id`, `applied_bursary`,`bursary_id`, `educational_level`, `school_name`, `country`, `parent_details`, `bio`, `student`) VALUES (NULL,'$applied_bursary','$bursary_id','$education_level','$school_name','$county','$parent_details','$bio','{$_SESSION['applicant_email']}')";
 
 if(mysqli_query($db, $apply)){
     echo "Applied";

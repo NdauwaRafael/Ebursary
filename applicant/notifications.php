@@ -1,9 +1,10 @@
 
 <?php
 require "../connection.php";
+require "../update_bursaries.php";
   session_start();
 
-$responses= "SELECT `application_response`.`id`, `application_id`, `responded_on`, `remarks_made`, `amount_awarded`, `applied_bursary`, `educational_level`, `school_name`, `country`, `status` FROM `application_response`,`applied` WHERE `application_response`.`application_id`=`applied`.`id` ";
+$responses= "SELECT `application_response`.`id`, `application_id`, `responded_on`, `remarks_made`, `amount_awarded`, `applied_bursary`, `educational_level`, `school_name`, `country`, `status` FROM `application_response`,`applied` WHERE `application_response`.`application_id`=`applied`.`id` AND `applied`.`student`='{$_SESSION['applicant_email']}' ";
 $result_resp = mysqli_query($db, $responses);
 
 $resp = array();

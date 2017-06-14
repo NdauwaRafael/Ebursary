@@ -1,9 +1,8 @@
 <?php
 require "../connection.php";
-require "../update_bursaries.php";
   session_start();
 
-$bursaries= "SELECT * FROM `bursary` WHERE `admin`='{$_SESSION['admin_email']}' ORDER BY `added_on` DESC";
+$bursaries= "SELECT * FROM `bursary` WHERE `status`='Review' AND `reviewer`='{$_SESSION['clerk_email']}' ORDER BY `added_on` ASC";
 $result_bur = mysqli_query($db, $bursaries);
 
 $burs = array();
